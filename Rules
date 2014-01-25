@@ -1,0 +1,93 @@
+#!/usr/bin/env ruby
+
+require 'compass'
+
+Compass.add_project_configuration('config.rb')
+
+compile '/posts/*' do
+  rep.filter :erb
+  rep.filter :bluecloth
+  rep.layout 'post'
+  rep.layout 'default'
+end
+
+compile '/posts/*', :rep => :summary do
+  rep.filter :erb
+  rep.filter :bluecloth
+  rep.layout 'post_summary'
+end
+
+compile '/style/partials/*/' do
+  # don’t compile partials
+end
+
+compile '/style/*/' do
+  filter :sass, Compass.sass_engine_options.merge(:syntax => :scss)
+end
+
+compile '/robots/' do
+  # dont filter or layout
+end
+
+compile '/images/*' do
+  # dont filter or layout
+end
+
+compile '/scripts/*' do
+  # dont filter or layout
+end
+
+compile '/favicon/' do
+  # dont filter or layout
+end
+
+compile 'sitemap' do
+  filter :erb
+end
+
+route 'sitemap' do
+  item.identifier.chop + '.xml'
+end
+
+compile '*' do
+  filter :erb
+  filter :kramdown
+  layout 'default'
+end
+
+route '/scripts/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
+route '/favicon/' do
+  '/favicon.ico'
+end
+
+route '/robots/' do
+  '/robots.txt'
+end
+
+route '/images/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
+route '/posts/*', :rep => :summary do
+  nil # Don't create files for summaries
+end
+
+route '/style/_*/' do
+  # don't output partials, so return nil
+  nil
+end
+
+route '/style/*/' do
+  # don't generate a directory like we do for HTML files
+  item.identifier.chop + '.css'
+end
+
+route '*' do
+  item.identifier + 'index.html'
+end
+
+layout '*', :erb
+#layout '*', :kramdown
