@@ -26,6 +26,7 @@
       <div id="sidebar">
         <ul>
           <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
           <li><a href="/services">Services</a></li>
@@ -36,25 +37,54 @@
 
 <h3 id="this-is-my-personal-website-and-blog">This is my personal website and blog.</h3>
 
+<h3 id="twitter-dd0chttpstwittercomdd0c">Twitter: <a href="https://twitter.com/dd0c">dd0c</a></h3>
+
+<h3 id="flipboard-ddochttpsflipboardcomsectionmindless-babble-b62dio">Flipboard: <a href="https://flipboard.com/section/mindless-babble-b62DiO">ddoc</a></h3>
+
+<div class="post">
+    <h3><a href="/posts/foreman_hooks_aws_vpc/">AWS VPC Buildout With Foreman Hooks for RDNS Creation</a></h3>
+    <aside>Posted at: 2014-01-15</aside>
+    <article>
+      <p>Originally posted on <a href="http://digital-ducttape.com/2013/10/23/aws-vpc-buildout-with-foreman_hooks-for-rdns-creation/">Digital Ducttape</a></p>
+
+<p><a href="http://theforeman.org/">Foreman</a> is a tool I have used for a long time as an external node classifier for Puppet and its smart-proxy for integration with DNS. However when Foreman recently <a href="http://projects.theforeman.org/issues/1871">added support</a> for building EC2 instances inside a VPC, I thought it was a great opportunity to use the same tool for a new buildout.</p>
+
+<p>Shortly after starting I discovered that reverse DNS is <a href="http://projects.theforeman.org/issues/3166">unfortunately broken</a> for EC2 VPC builds. Foreman does not map a relationship between VPC subnets and any DNS smart-proxy. Unswayed I took to #foreman and was guided to a potential solution.</p>
+
+<p>Enter <a href="https://github.com/theforeman/foreman_hooks">foreman_hooks</a>. This plugin for foreman allows you to subscribe to create/update/destroy events and invoke any executable. Lucky for me this was a great workaround for the functionality lacking in the recent 1.3 release. Initially I wrote a script utilizing the smart-proxy API to create PTR records but it complained that the IP address was already assigned. Fair enough. Without further investigation I wrote instead a short shell script which does the same thing using nsupdate with tsigs and viola! Integrated forward and reverse DNS for EC2 VPC deployments. A few more lines of code added support for the destroy hook and now the feature is complete.</p>
+
+<p>I named this script rdns.sh and placed it in /usr/share/foreman/config/hooks.d and created symlinks to it in both:</p>
+
+<p>/usr/share/foreman/config/hooks/host/managed/destroy/<br />
+/usr/share/foreman/config/hooks/host/managed/create/</p>
+
+<p><a href="https://gist.github.com/ddoc/8447483">source for rdns.sh</a><br />
+<a href="https://gist.github.com/ddoc/8446722">source for utils.sh</a><br />
+<a href="https://github.com/theforeman/foreman_hooks/blob/master/examples/hook_functions.sh">source for hook_functions.sh</a></p>
+
+<p>Of course, after implementing this I saw many uses for foreman_hooks including:</p>
+
+<ul>
+<li>resizing an EC2 root volume at build time</li>
+<li>attaching additional volumes</li>
+<li>EIP associations and DNS</li>
+<li>different hooks for different domains</li>
+<li>adding and removing hosts to an external monitoring system</li>
+</ul>
+
+
+<p>I will post updates on these implementations at another time.</p>
+    </article>
+  </div>
+
       </div>
-      <!--
       <div id="postbar">
-sorted_articles.each do |post|
-      <div class='post'>
-        <h1> link_to post[:title], post.path </h1>
-        <aside>Posted at:  post[:created_at] </aside>
-        <article>
-         post.compiled_content
-        </article>
       </div>
-end
-      </div>
-      -->
       <div id="logo"></div> 
       <div id="root_footer"></div>
     </div>
     <div id="footer">
-      <p>&copy;Brian Galura 2004-2014 updated: 2013-12-22</p>
+      <p>&copy;Brian Galura 2004-2014 updated: 2014-01-30</p>
     </div>
   </body>
 </html>
