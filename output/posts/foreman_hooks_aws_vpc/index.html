@@ -9,20 +9,42 @@
     <!--[if lt IE 8]>
       <link href="/style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <![endif]-->
-    <meta name="generator" content="nanoc 3.6.7">
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+      <link href="/style/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <meta name="generator" content="nanoc 3.7.5">
     <script src="/scripts/ga.js" type="text/javascript"></script>
   </head>
-  <body id="body">
-    <div id="root">
-      <div id="header">
-        <div id="name">Brian Galura - Linux and Web Guru</div>
-        <div id="hnav">
-        <ul>
-          <li class="first" style="padding-right: 15px"><a href="http://goo.gl/39Iuw">CV/R&eacute;sum&eacute;</a></li>
-          <li class="last"><a href="http://twitter.com/dd0c">Twitter</a></li>
-        </ul>
+  <body class="two-col" id="body">
+    <div id="container">
+      <nav class="navbar navbar-default">
+        <div id=header class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/">Brian Galura</a>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="first" style="padding-right: 15px"><a href="http://goo.gl/39Iuw">CV/R&eacute;sum&eacute;</a></li>
+                <li class="last"><a href="http://twitter.com/dd0c">Twitter</a></li>
+              </ul>
+           </div>
         </div>
-      </div>
+      </nav>
       <div id="sidebar">
         <ul>
           <li><a href="/">Home</a></li>
@@ -32,7 +54,7 @@
           <li><a href="/services">Services</a></li>
         </ul>
       </div>
-      <div id="main">
+      <div id="content">
         <h1>AWS VPC Buildout With Foreman Hooks for RDNS Creation</h1>
 <h2>Written at: 2014-01-15</h2>
 <p><p>Originally posted on <a href="http://digital-ducttape.com/2013/10/23/aws-vpc-buildout-with-foreman_hooks-for-rdns-creation/">Digital Ducttape</a></p>
@@ -48,8 +70,12 @@
 <p>/usr/share/foreman/config/hooks/host/managed/destroy/<br/>
 /usr/share/foreman/config/hooks/host/managed/create/</p>
 
-<p><a href="https://gist.github.com/ddoc/8447483">source for rdns.sh</a><br/>
-<a href="https://gist.github.com/ddoc/8446722">source for utils.sh</a><br/>
+<p><a href="https://gist.github.com/ddoc/8447483">source for rdns.sh</a></p>
+
+<script src="https://gist.github.com/ddoc/8447483.js"></script>
+
+
+<p><a href="https://gist.github.com/ddoc/8446722">source for utils.sh</a><br/>
 <a href="https://github.com/theforeman/foreman_hooks/blob/master/examples/hook_functions.sh">source for hook_functions.sh</a></p>
 
 <p>Of course, after implementing this I saw many uses for foreman_hooks including:</p>
@@ -117,9 +143,9 @@
       </div>
       <div id="logo"></div> 
       <div id="root_footer"></div>
-    </div>
-    <div id="footer">
-      <p>&copy;Brian Galura 2004-2014 updated: 2014-01-20</p>
+      <div id="footer">
+        <p>&copy;Brian Galura 2004-2015 updated: 2014-07-22</p>
+      </div>
     </div>
   </body>
 </html>

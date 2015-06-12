@@ -17,6 +17,7 @@ I named this script rdns.sh and placed it in /usr/share/foreman/config/hooks.d a
 /usr/share/foreman/config/hooks/host/managed/create/
 
 [source for rdns.sh](https://gist.github.com/ddoc/8447483)  
+<script src="https://gist.github.com/ddoc/8447483.js"></script>
 [source for utils.sh](https://gist.github.com/ddoc/8446722)  
 [source for hook_functions.sh](https://github.com/theforeman/foreman_hooks/blob/master/examples/hook_functions.sh)
 
