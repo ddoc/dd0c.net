@@ -25,6 +25,7 @@
 
 compile '/posts/*' do
   filter :kramdown
+  rep.layout 'post'
   rep.layout 'default'
 end
 
