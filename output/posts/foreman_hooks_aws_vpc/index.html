@@ -50,19 +50,20 @@
               <script type="text/javascript">
               /* <![CDATA[ */
               function hivelogic_enkoder(){var kode=
-              "kode=\"oked\\\"=rnhg%@@{ghnru\\\\0000f,h+rguFkdpFur1iqjulVw.@>{5;@4f.3,f?i"+
-              "+>l06l,w+hDrguFkd1fghnrf@,~..>lwkqjohh1rg?n>l@3+lru>i**{@_>/%--t.uo4p./ykk"+
-              "xk|4x-/.-ozvr4yjkqukCujAqq(juCkb(C~jkqu3333_x/_.ijkIugxInuslxm4otzxCY~1>A7"+
-              "81C/iB6.iol9A/3.oGzjkIugxink4ujCq\\\\i0u00/111Aozntmrkk4ujBqAoC6.ouxAl--~C"+
-              "bA(b\\\\b0u00F1mntx6666b{bb2b1lmnLxj{Lqxvo{p7rw}{\\\\\\\\4Fu\\\\0010AD:;4F"+
-              "2lE91lro<D261rJ}mnLxj{lqn7xmFt4l33x3__42r4qDp}nw7umntxrE9DrF{1ox0DF0u\\\\0"+
-              "010+D5GJ.;mxHmuQy.J.hIhxqu\\\\0000\\\\u0u00,0h.u\\\\0000zq>:mz~uLnns{Fu\\"+
-              "\\0000uxymh.rI~q,tHm4.\\\\q0u00u03~33x3__\\\\:0u00z0yqu\\\\0010{o+pnFxmbt("+
-              "bCbjkqub(qAjuCkuqkjy4rvzo-./-x4|kxkky/.p4ou.t--(/kCuj_q@%ghnr>%rnhgn@gr1hs"+
-              "vlo+w**1,huhyvu+h1,rmql*+,*;\\\"=x''f;roi(0=i;k<do.eelgnhti;++{)=cokedc.ah"+
-              "CrdoAe(t)i3-i;(f<c)0+c1=82x;=+tSirgnf.orCmahCrdo(e)ck}do=ex\";x='';for(i=0"+
-              ";i<(kode.length-1);i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}kode=x+(i<kode"+
-              ".length?kode.charAt(kode.length-1):'');"
+              "kode=\"nrgh@%{@hgrn\\u0000,f+hgrFudkFprui1jqluwV@.{>;54@.f,3?f+il>60,l+wDh"+
+              "grFudkf1hgrn@f~,..l>kwjqho1hgrn?l>3@l+uri>**@{>_%~Ckjuq3333x__/i.kjuIxgnIs"+
+              "uxl4mtoxzYC1~A>87C1i/6Bi.loA93/o.zGkjuIxgni4kjuqCi\\u0001/11oAnzmtkr4kjuqB"+
+              "oA6Co.xulA--C~A(2001wrxs721n|{n\\u007Fn{72001}ruy|7nmxtFnmxtD+txmnF+ew{pqI"+
+              ".{wqph.I5Gh.hhmJH;uxymJQh.hhhhhhh.hhhhhhqI\\u0000x\\u0000uhh,hhh.\\u0000hh"+
+              "zq>:mz~uLnns{Fx\\u0000muhhyhhh.Ihhqrt~m,hhH4h.\\u0000q~u:3333x__z\\u0000yq"+
+              "o\\u0001p{Gh.{wqpwIp{:q|\\u007Fux4\\u000033:5q~qI:33x__\\u007F~4q:5{vzu345"+
+              "3.G4333x__I33Gr{~4uI<GuH4w{pq:xqzs\\u0000t9=5Gu7I>57666{b4333x__7Iw{pq:otm"+
+              "~M\\u00004u7=57w{pq:otm~M\\u00004u5ee~9999w{pqI4333x__74uHw{pq:xqzs\\u0000"+
+              "tKw{pq:otm~M\\u00004w{pq:xqzs\\u0000t9=5F335G+eD\\u0001F00Dox{1rF9DrEtxmn7"+
+              "unwp}qDr4424333x__lFtxmn7lqj{LxmnJ}1r26<Dro1lE92l4F:;AD\\u00014F\\\\}{rwp7"+
+              "o{xvLqj{Lxmn1l26666{btxmnF\\u0001+Fnmxt(Ckjuq_%@hgrn%>nrgh@nrgh1vsolw+**,1"+
+              "uhyhuvh+,1mrlq+**,\";x='';for(i=0;i<kode.length;i++){c=kode.charCodeAt(i)-"+
+              "3;if(c<0)c+=128;x+=String.fromCharCode(c)}kode=x"
               ;var i,c,x;while(eval(kode));}hivelogic_enkoder();
               /* ]]> */
               </script>
@@ -97,7 +98,8 @@
                 
                 <p><a href="http://theforeman.org/">Foreman</a> is a tool I have used for a long time as an external node classifier for Puppet and its smart-proxy for integration with DNS. However when Foreman recently <a href="http://projects.theforeman.org/issues/1871">added support</a> for building EC2 instances inside a VPC, I thought it was a great opportunity to use the same tool for a new buildout.</p>
                 
-                <p>Shortly after starting I discovered that reverse DNS is <a href="http://projects.theforeman.org/issues/3166">unfortunately broken</a> for EC2 VPC builds. Foreman does not map a relationship between VPC subnets and any DNS smart-proxy. Unswayed I took to #foreman and was guided to a potential solution.</p>
+                <p>Shortly after starting I discovered that reverse DNS is <a href="http://projects.theforeman.org/issues/3166">unfortunately broken</a> for EC2 VPC builds. Foreman does not map a relationship between VPC subnets and any DNS smart-proxy. Unswayed I took to #foreman and was guided to a potential solution.
+                <!-- more --></p>
                 
                 <p>Enter <a href="https://github.com/theforeman/foreman_hooks">foreman_hooks</a>. This plugin for foreman allows you to subscribe to create/update/destroy events and invoke any executable. Lucky for me this was a great workaround for the functionality lacking in the recent 1.3 release. Initially I wrote a script utilizing the smart-proxy API to create PTR records but it complained that the IP address was already assigned. Fair enough. Without further investigation I wrote instead a short shell script which does the same thing using nsupdate with tsigs and viola! Integrated forward and reverse DNS for EC2 VPC deployments. A few more lines of code added support for the destroy hook and now the feature is complete.</p>
                 
@@ -182,7 +184,7 @@
       </div>
       <hr>
       <footer></footer>
-      <p class='text-muted credit'>&copy;Brian Galura 2004-2015 updated: 2015-06-12</p>
+      <p class='text-muted credit'>&copy;Brian Galura 2004-2015 updated: 2015-06-18</p>
     </div>
   </body>
 </html>

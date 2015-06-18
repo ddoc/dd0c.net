@@ -1,2 +1,10 @@
-%p This is my personal website and blog. 
+- sorted_articles.each do |post| 
+  .post
+    %h4
+      = link_to post[:title], post.path
+    %aside
+      Posted at:
+      = post[:created_at]
+    %article
+      = get_post_start(post)
 
