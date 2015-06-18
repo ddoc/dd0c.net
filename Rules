@@ -23,9 +23,10 @@
 #  end
 #end
 
-#compile '/posts/*', :rep => :md do
-#  layout 'markdown'
-#end
+compile '/posts/*' do
+  filter :kramdown
+  rep.layout 'default'
+end
 
 #route '/posts/*', :rep => :md do
 #  #y,m,d,slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier).captures
@@ -49,6 +50,14 @@ route '/images/*/' do
   item.identifier.chop + '.' + item[:extension]
 end
 
+compile '/styles/*' do
+  # dont filter or layout
+end
+
+route '/styles/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
 compile '/scripts/*' do
   # dont filter or layout
 end
@@ -66,8 +75,14 @@ route '/favicon/' do
 end
 
 compile '*' do
-   filter :haml
-   layout 'default'
+    if item[:extension] == 'md'
+      filter :kramdown
+    elsif item[:extension] == 'md'
+      filter :kramdown
+    else
+      filter :haml
+      layout 'default'
+    end
 end
 
 route '*' do
