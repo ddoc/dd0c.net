@@ -37,27 +37,32 @@
             Brian Galura 
         #navbar.collapse.navbar-collapse
           %ul.nav.navbar-nav
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                Contact 
+                %span.caret
+              %ul.dropdown-menu
+                %li
+                  = enkode_mail('bg@brian2.net','Email')
+                %li
+                  %a{:href=>"tel:+1-310-651-6348"} Phone 
+                %li
+                  %a{:href=>"https://twitter.com/dd0c"} Twitter 
             %li
-              %a{ :href=>"http://goo.gl/39Iuw"} CV/R&eacute;sum&eacute;
-            %li #{ enkode_mail('bg@brian2.net','Email') }
+              %a{:href => "/about/"} About
             %li
-              %a{:href=>"tel:+1-310-651-6348"} Phone 
+              %a{:href => "/services/"} Services    
             %li
               %a{:href=>"https://flipboard.com/@ddoc/"} Flipboard 
             %li{:class=>"last"}
-              %a{:href=>"https://twitter.com/dd0c"} Twitter 
+              %a{ :href=>"http://goo.gl/39Iuw"} CV/R&eacute;sum&eacute;
     .container
       .row.row-offcanvas.row-offcanvas-right
-        .col-xs-12.col-sm-9
+        .col-xs-14.col-sm-14
           .row
-            .col-xs-12.col-lg-12
+            .col-xs-14.col-lg-14
               %h1 #{ @item[:title] }
               = yield
-        #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas
-          .list-group
-            %a.list-group-item{:href => "/about/"} About
-            %a.list-group-item{:href => "/posts/"} Blog
-            %a.list-group-item{:href => "/services/"} Services    
       %hr
     
       %footer 
