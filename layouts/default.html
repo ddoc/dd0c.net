@@ -12,12 +12,12 @@
 
     %script{ :src => "http://code.jquery.com/jquery-2.1.4.min.js", :type => "text/javascript"}
 
-    <!-- Latest compiled and minified CSS -->
+    / Latest compiled and minified CSS
     %link{ :href => "https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.2/flatly/bootstrap.min.css", :rel => "stylesheet"}
-    <!-- Latest compiled and minified JavaScript -->
+    / Latest compiled and minified JavaScript
     %script{ :src => "//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js", :type => "text/javascript"}
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    / HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries 
+    / WARNING: Respond.js doesn't work if you view the page via file:// 
     /[if lt IE 9]
       %script{ :src => "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"}
       %script{ :src => "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"}
@@ -58,13 +58,17 @@
               %a{ :href=>"http://goo.gl/39Iuw"} CV/R&eacute;sum&eacute;
     .container
       .row.row-offcanvas.row-offcanvas-right
-        .col-xs-14.col-sm-14
+        .col-xs-12.col-sm-12
           .row
-            .col-xs-14.col-lg-14
+            .col-xs-9.col-lg-9
               %h1 #{ @item[:title] }
               = yield
-      %hr
-    
+            .col-xs-3.col-lg-3
+              #sidebar.list-group
+                - sorted_articles.each do |post| 
+                  %a.list-group-item{:href => "#{post.path}"}
+                    = post[:title]
+              
       %footer 
       %p{ :class => "text-muted credit" } &copy;Brian Galura 2004-#{ Time.now.strftime('%Y') } updated: #{ @item.mtime.to_iso8601_date } 
     

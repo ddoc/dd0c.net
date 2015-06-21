@@ -1,5 +1,6 @@
-%h4
-  Written at: #{@item[:created_at]}
+.jumbotron
+  %h4 
+    Posted on #{get_pretty_date(@item)}
 %p= yield
 #fb-root
 :javascript

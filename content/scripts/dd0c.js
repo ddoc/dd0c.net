@@ -6,6 +6,12 @@ $(document).ready(function(){
  *
  * @type {{flagAdd: boolean, elements: string[], add: Function, remove: Function}}
  */
+$('#sidebar').affix({
+      offset: {
+        top: $('header').height()
+      }
+});	
+
 var myNavBar = {
 
     flagAdd: true,
