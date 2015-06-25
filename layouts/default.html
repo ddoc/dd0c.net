@@ -27,7 +27,7 @@
     %script{ :src => "/scripts/dd0c.js", :type => "text/javascript"}
   %body
     %nav#header.navbar.navbar-default.navbar-fixed-top
-      #header-container.container.navbar-container
+      #header-container.container-fluid
         .navbar-header
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
           <span class="sr-only">Toggle navigation</span>
@@ -63,7 +63,7 @@
             %li{:class=>"last"}
               %a{ :href=>"http://goo.gl/39Iuw"} CV/R&eacute;sum&eacute;
     .container
-      .row.row-offcanvas.row-offcanvas-right
+      %div
         .row
           .col-md-9.col-sm-12
             %h1 #{ @item[:title] }
